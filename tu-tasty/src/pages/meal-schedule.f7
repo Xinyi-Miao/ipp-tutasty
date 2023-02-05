@@ -1,0 +1,190 @@
+<template>
+  <div class="page background" data-name="meal-schedule">
+    <div class="navbar">
+      <div class="navbar-bg"></div>
+      <div class="navbar-inner sliding">
+        <div class="left logo"></div>
+        <div class="right">
+          <i class="icon material-icons" id="ch" style="margin-right: 10px;">account_circle</i>
+          <i class="icon material-icons">settings</i>
+        </div>
+      </div>
+    </div>
+    
+    <div class="page-content">
+      <!--Date Picker-->
+      <div class="block date-picker">
+        <div class="row">
+          <div class="col-20">
+            <a>
+              <i class="icon material-icons">arrow_left</i>
+            </a>
+          </div>
+          <div class="col-60 pickerax" style="margin-bottom: 20px;">
+            <div class="list no-hairlines-md">
+              <ul>
+                <li>
+                  <div class="item-content item-input">
+                    <div class="item-inner">
+                      <div class="item-input-wrap">
+                        <input type="text" placeholder="TODAY" readonly="readonly" id="demo-calendar-modal"/>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-20">
+            <a>
+              <i class="icon material-icons">arrow_right</i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+        <!--Counters-->
+        <div class="block" style="margin-top: 50px;">
+          <!--1, 2, 3, 4-->
+          <div class="block-title" style="text-align: center; margin-top: 0;">Counters</div>
+          <div class="row">
+            <div id="q1" class="col-25 counter-q2" style="border-radius:5px;"> <div class="circle">1</div> </div>         
+            <div class="col-50" style="border: none; padding: 0px;" >
+              <div class="row no-gap">
+                <div id="q2" class="col-50 counter-q3" style="border-radius:5px;"> <div class="circle">2</div>  </div>
+                <div id="q3" class="col-50 counter-q2" style="border-radius:5px;"> <div class="circle">3</div>  </div>
+              </div>
+            </div>
+            <div id="q4" class="col-25 counter-q2" style="border-radius:5px;"> <div class="circle">4</div>  </div>
+          </div>
+          <!--5, 6-->
+          <div class="row">
+            <div class="col-30" style="border: none; padding: 0px;" >
+              <div class="row no-gap">
+                <div id="q5" class="col-60 counter-q3" style="margin-bottom: 0px;border-radius:5px;" > <div class="circle">5</div>  </div>
+                <div id="q6" class="col-40 counter-q3" style="margin-bottom: 0px;border-radius:5px;" > <div class="circle actc">6</div>  </div>
+              </div>
+              <!--9, 10-->
+              <div class="row no-gap">
+                <div id="q9" class="col-60 counter-q1" style="min-height: 47px; line-height: 37px;border-radius:5px;"> <div class="circle">9</div>  </div>
+                <div id="q10" class="col-40 counter-q2" style="min-height: 47px; line-height: 37px;border-radius:5px;"> <div class="circle">10</div>  </div>
+              </div>
+            </div>
+            <!--7, 11-->
+            <div class="col-30" style="border: none; padding: 0px; margin-bottom: 0;" >
+              <div id="q7" class="col-100 counter-q1" style="border-radius:5px; margin: 0px;"> <div class="circle">7</div>  </div>
+              <div id="q11" class="col-100 counter-q3" style="border-radius:5px; min-height: 37px; line-height: 37px; margin: 0;"> <div class="circle">11</div>  </div>
+            </div>
+            <!--8-->
+            <div class="col-30" style="border: none; padding: 0px;" >
+              <div class="row no-gap">
+                <div id="q8" class="col-100 counter-q3" style="border-radius:5px;"> <div class="circle">8</div>  </div>
+              </div>
+            </div>
+          </div>
+
+          <!--Expected Queues-->
+          <div class="block-title" style="text-align: center; margin-top: 0;">Expected Queues</div>
+          <div class="row no-gap">
+            <div class="col counter-q1 queues" style="border-top-left-radius: 5px; border-bottom-left-radius: 5px;">short</div>
+            <div class="col counter-q2 queues"></div>
+            <div class="col counter-q3 queues" style="border-top-right-radius: 5px; border-bottom-right-radius: 5px;">long</div>
+          </div>
+    
+        </div>
+        
+
+
+      <!--Dish Cards-->
+      <div class="list media-list dish-card">
+        <ul id="dish-cards">
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</template>
+
+<style>
+
+
+</style>
+<script>
+  import mockDishes from '../js/dishes.js';
+  
+  export default (props, { $, $f7, $on }) => {
+    let calendarModal;
+
+    $on('pageInit', () => {
+      displayDishes('dish-cards');
+      // Default
+      calendarModal = $f7.calendar.create({
+        locale: 'en-US',
+        inputEl: '#demo-calendar-modal',
+        openIn: 'customModal',
+        header: true,
+        footer: true,
+        dateFormat: { weekday: 'short', month: 'short', day: '2-digit', year: 'numeric' },
+      });
+    });
+    return $render;
+  };
+
+  window.datesAreOnSameDay = (first, second) =>
+    first.getFullYear() === second.getFullYear() &&
+    first.getMonth() === second.getMonth() &&
+    first.getDate() === second.getDate();
+
+  window.toggleVisibility = (elem,number) => {
+    console.log(elem.classList)
+    if(elem.innerHTML == "visibility") {
+      elem.innerHTML = "visibility_off"
+      document.getElementById("q"+number).classList.remove("counter-q0")
+      elem.parentElement.parentElement.parentElement.classList.remove("selected-dish")
+    } else {
+      elem.innerHTML = "visibility"
+      document.getElementById("q"+number).classList.add("counter-q0")
+      elem.parentElement.parentElement.parentElement.classList.add("selected-dish")
+    }
+  }
+
+  function displayDishes(elementID) {
+    const dishCards = document.getElementById(elementID);
+    dishCards.innerHTML = "";
+    let dishes = mockDishes();
+    console.log(dishes);
+    dishes.forEach((dish) => {
+      if(!datesAreOnSameDay(dish.date,new Date(Date.now()))) return;
+      const currentDishHtmlString = `
+      <li>
+            <div class="dish-card-div item-link item-content">
+              <div style="position: absolute; top: 7px; left: 7px; font-size: 15px;">${dish.counter}</div>  
+              <div class="item-media">
+                  <img src="${dish.url}" width="60" style="border-radius: 20%; margin: 0 5px;"/>
+                </div>
+                <a href="/dish/${dish.id}" style="width:50%; color: black">
+                  <div class="item-title" style="overflow-wrap: break-word;">${dish.title}</div>
+                  <div class="item-subtitle" >${dish.type}</div>
+                  <div class="item-title">${dish.price}</div>
+                </a>
+                <div style="margin-right: 10px; width: 85px;">
+                  <div style="display: flex; margin-bottom: 10px;">
+                    <i class="icon material-icons" style="color:#F8B11E">grade</i>
+                    <div class="item-subtitle" >${dish.averageRating} (${dish.numRatings})</div>
+                  </div>
+                  <div style="display: flex; justify-content: space-evenly;">
+                    <i class="icon material-icons ${(dish.date<=new Date(Date.now() + 86400000*7)) ? "deactivated" : "activated"}">local_grocery_store</i>
+                    <i class="icon material-icons activated" onclick="toggleVisibility(this,${dish.counter})">visibility_off</i>
+                  </div>
+                </div>
+            </div>
+          </li>
+      `;
+      dishCards.innerHTML += currentDishHtmlString
+    }
+
+    )
+  }
+
+
+</script>

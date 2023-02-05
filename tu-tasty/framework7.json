@@ -1,0 +1,19 @@
+{
+  "cwd": "C:\\Users\\majas\\Desktop\\WS2023_TUtasty\\tu-tasty",
+  "type": [
+    "web"
+  ],
+  "name": "TUtasty",
+  "framework": "core",
+  "template": "tabs",
+  "bundler": "vite",
+  "cssPreProcessor": false,
+  "theming": {
+    "customColor": true,
+    "color": "#2b64b8",
+    "darkTheme": false,
+    "iconFonts": true,
+    "fillBars": true
+  },
+  "customBuild": false
+}

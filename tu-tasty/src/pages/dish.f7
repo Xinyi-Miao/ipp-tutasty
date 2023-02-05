@@ -1,0 +1,250 @@
+<template>
+  <div class="page background" data-name="dish">
+    <div class="navbar">
+      <div class="navbar-bg"></div>
+      <div class="navbar-inner sliding">
+        <div class="left logo"></div>
+        <div class="right">
+          <i class="icon material-icons" id="ch" style="margin-right: 10px;">account_circle</i>
+          <i class="icon material-icons">settings</i>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-content" style="padding-top: 20px;">
+      <a href="#" class="link back" style="margin-left:20px;">
+        <i class="icon icon-back"></i>
+        <span class="if-not-md"></span>
+      </a>
+
+      <!--Dish Overview-->
+      <div class="list media-list dish-card">
+        <ul>
+          <li>
+            <div class="item-link item-content" style="background-color: white; margin-bottom: 30px;">
+              <div class="item-media">
+                  <img src="${dish.url}" width="60" style="border-radius: 20%;" />
+                </div>
+                <div style="width:80%; position: relative">
+                  <div class="item-title" style="overflow:inherit; --f7-list-item-title-white-space: wrap;">${dish.title}</div>
+                  <div class="item-subtitle" >${dish.type}</div>
+                  <div class="item-title">${dish.price}</div>
+                <div style="position: absolute; bottom: 11px; right: 20px">
+                  <div style="display: flex; justify-content: space-evenly; margin-top: 24px;">
+                    <i class="icon material-icons" style="color:#F8B11E">grade</i>
+                    <div class="item-subtitle" >${dish.averageRating} (${dish.numRatings})</div>
+                  </div>
+                </div>
+                </div>
+              </div>
+          </li>
+        </ul>
+      </div>
+
+      <!--Toolbar Selector with Booking, Ratings, Info-->
+      <div class="toolbar tabbar" style="box-shadow:none;">
+        <div class="toolbar-inner">
+          <!--Booking-->
+          <a href="#tab-booking" class="tab-link ratings tab-link-active">
+            <div style="display: flex; align-items: normal;">
+              <i class="icon material-icons" style="font-size: 20px; margin-right: 5px">assignment_turned_in</i>
+              Booking
+            </div>
+          </a>
+          <!--Ratigns-->
+          <a href="#tab-ratings" class="tab-link ratings">
+            <div style="display: flex; align-items: normal;">
+              <i class="icon material-icons" style="font-size: 20px; margin-right: 5px">star</i>
+              Ratings
+            </div>
+          </a>
+          <!--Info-->
+          <a href="#tab-info" class="tab-link ratings">
+            <div style="display: flex; align-items: normal;">
+              <i class="icon material-icons" style="font-size: 20px; margin-right: 5px">info</i>
+              Info
+            </div>
+          </a>
+        </div>
+      </div>
+      <!--Toolbar Tabs-->
+      <div class="tabs-animated-wrap">
+        <div class="tabs">
+          <!--BOOKING-->
+          <div id="tab-booking" class="tab tab-active">
+            <div class="block dish-block">
+              <p>
+                By booking a meal in advance, you help us adapt our order volumes to your demand. This not only prevents
+                waste but can also save you a pretty penny!
+              </p>
+              <p>
+                Click on “Book Meal” to let us know what you will be eating. If you do so at least one week in advance,
+                you will receive a discount on the meal at checkout.
+              </p>
+            </div>
+            <div id="bookingButtonRow" class="row">
+              <div class="col-25"></div>
+              <button class="col-50 button button-fill button-round" style="padding: 20px">BOOK THIS DISH
+              </button>
+              <div class="col-25"></div>
+            </div>
+            <p style="text-align: center;">
+              save 20%
+            </p>
+            <p style="text-align: center;">
+              discount only applies if you book before 29/11/2022
+            </p>
+          </div>
+          <!--RATINGS-->
+          <div id="tab-ratings" class="tab">
+            <div class="block">
+              <div style="display:flex; justify-content: space-evenly;">
+                <a href="#" class="popup-open" data-popup="#dish-rating-popup">
+                  <i class="icon material-icons" style="color:#eeb345;">star</i>
+                </a>
+                <a href="#" class="popup-open" data-popup="#dish-rating-popup">
+                  <i class="icon material-icons" style="color:#eeb345;">star</i>
+                </a>
+                <a href="#" class="popup-open" data-popup="#dish-rating-popup">
+                  <i class="icon material-icons" style="color:#eeb345;">star</i>
+                </a>
+                <a href="#" class="popup-open" data-popup="#dish-rating-popup">
+                  <i class="icon material-icons" style="color:#eeb345;">star</i>
+                </a>
+                <a href="#" class="popup-open" data-popup="#dish-rating-popup">
+                  <i class="icon material-icons" style="color:#eeb345;">star_border</i>
+                </a>
+              </div>
+              <div style="margin-top: 10px">
+                <div class="chip">
+                  <div class="chip-label">too salty 37%</div>
+                </div>
+                <div class="chip">
+                  <div class="chip-label">too sweet 4%</div>
+                </div>
+              </div>
+              <div class="block dish-block">
+                <div style="display: flex">
+                  <div style="margin-right: 30px; font-weight: 700;">
+                    Martha
+                  </div>
+                  <div style="display:flex; justify-content: space-between;">
+                    
+                    <a href="#" class="popup-open" data-popup="#dish-rating-popup">
+                      <i class="icon material-icons" style="color:#eeb345;">star</i>
+                    </a>
+                    <a href="#" class="popup-open" data-popup="#dish-rating-popup">
+                      <i class="icon material-icons" style="color:#eeb345;">star</i>
+                    </a>
+                    <a href="#" class="popup-open" data-popup="#dish-rating-popup">
+                      <i class="icon material-icons" style="color:#eeb345;">star</i>
+                    </a>
+                    <a href="#" class="popup-open" data-popup="#dish-rating-popup">
+                      <i class="icon material-icons" style="color:#eeb345;">star</i>
+                    </a>
+                    <a href="#" class="popup-open" data-popup="#dish-rating-popup">
+                      <i class="icon material-icons" style="color:#eeb345;">star</i>
+                    </a>
+                  </div>
+                </div>
+                <p>
+                  Great taste! Loved it
+                </p>
+                <p>
+                  Click on “Book Meal” to let us know what you will be eating. If you do so at least one week in advance,
+                  you will receive a discount on the meal at checkout.
+                </p>
+              </div>
+              <div class="block dish-block">
+                <div style="display: flex">
+                  <div style="margin-right: 30px; font-weight: 700;">
+                    Karl
+                  </div>
+                  <div style="display:flex; justify-content: space-between;">
+                    
+                    <a href="#" class="popup-open" data-popup="#dish-rating-popup">
+                      <i class="icon material-icons" style="color:#eeb345;">star</i>
+                    </a>
+                    <a href="#" class="popup-open" data-popup="#dish-rating-popup">
+                      <i class="icon material-icons" style="color:#eeb345;">star</i>
+                    </a>
+                    <a href="#" class="popup-open" data-popup="#dish-rating-popup">
+                      <i class="icon material-icons" style="color:#eeb345;">star</i>
+                    </a>
+                    <a href="#" class="popup-open" data-popup="#dish-rating-popup">
+                      <i class="icon material-icons" style="color:#eeb345;">star</i>
+                    </a>
+                    <a href="#" class="popup-open" data-popup="#dish-rating-popup">
+                      <i class="icon material-icons" style="color:#eeb345;">star_border</i>
+                    </a>
+                    <div style="width:60px; font-weight: 700;">
+
+                    </div>
+                  </div>
+                </div>
+                <p>
+                  Ehrenmensa
+                </p>
+                <div class="chip" style="background-color: white; margin-left:0">
+                  <div class="chip-label">too salty</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--INFO-->
+          <div id="tab-info" class="tab">
+            <div class="block dish-block">
+              <p>Pasta: hardweat grain, water.</p>
+              <p>
+                Bolognese Sauce: water, 19% beef and pork (50% beef, 50% pork), tomato paste double concentrated, 10.2% tomato pulp, vegetables (carrots, celery), 6% diced tomatoes, seasoning mix (table salt, modified corn starch, spices, sugar, table seasoning, beef extract, table gelatin, dextrose, herbs, spice extracts), table gelatin, canola oil.
+              </p>
+              <p>
+                Alergens: <b>gluten</b>, pork, tomato
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+<script>
+  import mockDishes from '../js/dishes.js';
+
+
+  export default function (props, {$f7route, $on }) {
+    $on('pageInit', () => {
+      book();
+      // Default
+    });
+
+    let dishes = mockDishes();
+    let dish;
+    console.log($f7route.params)
+    for (let i = 0; i< dishes.length; i++) {
+      if(dishes[i].id == $f7route.params.id) {
+        dish=dishes[i]
+        break;
+      }
+    }
+    return $render;
+  };
+
+  function book() {
+    const button = document.getElementById('bookingButtonRow');
+    button.innerHTML = `<div class="col-25"></div>
+              <button onclick="toggle(this)" class="col-50 button button-fill button-round" style="padding: 20px">BOOK THIS DISH
+              </button>
+              <div class="col-25"></div>`
+  }
+
+  window.toggle = (elem) => {
+    if(elem.innerHTML.includes("!")) {
+      elem.style["background-color"] = "#1464BC";
+      elem.innerHTML = "BOOK THIS DISH";
+    } else {
+      elem.style["background-color"] = "#FAD17C";
+      elem.innerHTML = `<i class="icon material-icons" style="color: white; padding-right: 10px">check</i>` + "DISH BOOKED!";
+    }
+};
+</script>

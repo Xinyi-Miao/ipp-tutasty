@@ -1,0 +1,283 @@
+/* Custom color theme properties */
+:root {
+  --f7-theme-color: #2b64b8;
+  --f7-theme-color-rgb: 43, 100, 184;
+  --f7-theme-color-shade: #235297;
+  --f7-theme-color-tint: #3b77d1;
+  
+  --f7-grid-gap: 16px;
+  --f7-grid-row-gap: 0px;
+  --f7-grid-resize-handler-bg-color: rgba(0, 0, 0, 0.35);
+}
+
+/* Invert navigation bars to fill style */
+:root,
+:root.dark,
+:root .dark {
+  --f7-bars-bg-color: var(--f7-theme-color);
+  --f7-bars-bg-color-rgb: var(--f7-theme-color-rgb);
+  --f7-bars-translucent-opacity: 0.9;
+  --f7-bars-text-color: #fff;
+  --f7-bars-link-color: #fff;
+  --f7-navbar-subtitle-text-color: rgba(255,255,255,0.85);
+  --f7-bars-border-color: transparent;
+  --f7-tabbar-link-active-color: #fff;
+  --f7-tabbar-link-inactive-color: rgba(255,255,255,0.54);
+  --f7-sheet-border-color: transparent;
+  --f7-tabbar-link-active-border-color: #fff;
+  --f7-grid-resize-handler-bg-color: rgba(255, 255, 255, 0.35);
+}
+.page-content {
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  background:white;
+  margin-top: 60px;
+}
+.appbar,
+.navbar,
+.calendar-month-selector {
+  --f7-bars-link-color: #000;
+}
+.calendar-year-selector {
+  --f7-bars-link-color: #000;
+}
+.link.back {
+  --f7-bars-link-color: #fff;
+}
+.subnavbar,
+.calendar-header,
+.calendar-footer {
+  --f7-touch-ripple-color: var(--f7-touch-ripple-white);
+  --f7-link-highlight-color: var(--f7-link-highlight-white);
+  --f7-link-touch-ripple-color: var(--f7-touch-ripple-white);
+  --f7-button-text-color: #fff;
+  --f7-button-pressed-bg-color: rgba(255,255,255,0.1);
+}
+.page.background {
+  padding-bottom: 42px;
+  background-color:#2b64b8;
+}
+
+.navbar-large-transparent,
+.navbar-large.navbar-transparent {
+  --f7-navbar-large-title-text-color: #000;
+
+  --r: 43;
+  --g: 100;
+  --b: 184;
+  --progress: var(--f7-navbar-large-collapse-progress);
+  --f7-bars-link-color: rgb(
+    calc(var(--r) + (255 - var(--r)) * var(--progress)),
+    calc(var(--g) + (255 - var(--g)) * var(--progress)),
+    calc(var(--b) + (255 - var(--b)) * var(--progress))
+  );
+}
+.dark .navbar-large-transparent,
+.dark .navbar-large.navbar-transparent {
+  --f7-navbar-large-title-text-color: #fff;
+}
+
+/* Your app custom styles here */
+
+#demo-calendar-modal {
+  --f7-input-placeholder-color: black;
+  text-align: center;
+}
+
+#popular-times {
+  /*Popular Times graph styling goes here*/
+  text-align: center;
+  display: flex;
+}
+
+div[class*="col"] {
+  text-align: center;
+  border: none;
+  padding: 5px;
+  font-size: 12px;
+  margin-bottom: 16px;
+}
+
+
+
+.counter-q1 {
+  background-color: #D9E3F2;
+}
+.counter-q2 {
+  background-color: #86A7D7;
+}
+.counter-q3 {
+  background-color: #2B64B8;
+  color: white;
+}
+
+.counter-q0 {
+  background-color: #F8B11E;
+}
+
+.date-picker {
+  height: 40px;
+  text-align: center;
+  margin-bottom: -30px;
+  margin-top:-20px;
+}
+
+.page-content .tab {
+  padding-top: 0;
+}
+
+.popular-times-levels {
+  flex-grow: 3;
+  display: flex;
+  align-items:space-between;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.popular-times-graph {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  height: 160px;
+  position: relative;
+}
+
+.popular-times-lines {
+  position: absolute;
+  display: flex;
+  align-items:space-between;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 200px;
+  width: 100%;
+}
+
+.bar {
+  width: 20px;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+
+.bar-times {
+  margin: 0 13px;
+}
+
+
+.logo{
+  width: 80px;
+  height: 32px;
+  margin-left: 20px;
+  background-image:url(../images/logo.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.navbar {
+  height: 60px;
+  box-shadow: none;
+  overflow:hidden
+}
+.right {
+  margin-right: 10px;
+}
+.circle{
+    width:25px;
+    height: 25px;
+    border-radius:100%;
+    background: white;
+    margin: auto;
+    line-height: 25px;
+    color: #333;
+  }
+  .icon-checkbox, .checkbox i {
+    border-radius: 0;
+    margin-right: 20px;
+  }
+  .list ul:after ,.list ul::before{
+    display: none;
+  }
+  .list .item-titl{
+    font-weight: bold;
+  }
+  .list ul li:hover{
+        background: #e0e8f6;
+      }
+
+  .list ul li{
+    background: #f1f1f1;
+    border-radius:10px
+  }
+  .pickerax .list{
+    margin: 0;
+    margin-top: -10px;
+  }
+
+
+  .dish-card {
+    width: 95%;
+    margin: auto;
+  }
+
+  .dish-card-div {
+    margin-bottom: 10px;
+    border-radius: 10px;
+    padding-left:0; 
+    display: flex; 
+    position:relative;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .selected-dish {
+    background-color: #DCE8F4;
+    background-color: #f8af1e51;
+  }
+
+  .icon.deactivated {
+    color: rgb(180, 180, 180);
+  }
+  .icon.activated {
+    color: #000;
+  }
+
+  .queues {
+    min-height: 20px;
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: 13px !important;
+  }
+
+  .block.dish-block {
+    background-color: #f1f1f1;
+    margin-left: 20px;
+    margin-right: 20px;
+    padding: 16px;
+    border-radius: 10px;
+  }
+
+  .toolbar .toolbar-inner .tab-link.ratings {
+    color: #1464BC;
+    background-color: #DCE8F4;
+    border-radius: 17px;
+    padding: 5px;
+    height: min-content;
+    margin: 5px;
+  }
+
+  .toolbar .toolbar-inner .tab-link.ratings.tab-link-active {
+    color: white;
+    background-color: #F8B11E;
+    border-radius: 17px;
+    padding: 5px;
+    height: min-content;
+  }
+
+.block-title {
+  color: #1563BE;
+}
+
+.chip {
+  background-color: #eeeeee;
+  margin: 5px;
+}

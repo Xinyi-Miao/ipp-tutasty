@@ -1,0 +1,92 @@
+ 
+
+<template>
+  <div class="page background" data-name="home">
+    <!-- Top Navbar -->
+    <div class="navbar">
+      <div class="navbar-bg"></div>
+      <div class="navbar-inner sliding">
+        <div class="left logo"></div>
+        <div class="right">
+          <i class="icon material-icons" id="ch" style="margin-right: 10px;">account_circle</i>
+          <i class="icon material-icons">settings</i>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scrollable page content-->
+    <div class="page-content">
+      <div class="block date-picker">
+        <div class="row">
+          <div class="col-20">
+            <a>
+              <i class="icon material-icons">arrow_left</i>
+            </a>
+          </div>
+          <div class="col-60 pickerax" style="margin-bottom: 20px;">
+            <div class="list no-hairlines-md">
+              <ul>
+                <li>
+                  <div class="item-content item-input">
+                    <div class="item-inner">
+                      <div class="item-input-wrap">
+                        <input type="text" placeholder="TODAY" readonly="readonly" id="demo-calendar-modal"/>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-20">
+            <a>
+              <i class="icon material-icons">arrow_right</i>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="block-title" style="text-align: center; margin-top: 190px">Popular Times</div>
+      <div class="block" id="popular-times" style="margin-bottom:0;">
+        <!--the Popular Times graph goes here-->
+
+        <div class="popular-times-levels">
+          <div style="margin-top: 40px;">high</div>
+          <div>medium</div>
+          <div style="margin-bottom: 20px;">low</div>
+        </div>
+        <div style="flex-grow:4;">
+          <div class="popular-times-graph">
+            <div class="popular-times-lines">
+                <div style="margin: 50px 0px 10px; border-style: solid; border-width: 1px; height: 0; border-color: #889DC2;"></div>
+                <div style="margin: 10px 0px; border-style: dashed; border-width: 1px; height: 0; border-color: #889DC2;"></div>
+                <div style="margin: 10px 0px; border-style: solid; border-width: 1px; height: 0; border-color: #889DC2;"></div>
+            </div>
+            <div class="bar" style="height: 40px; background-color: #D9E3F2; border-bottom-left-radius: 4px;"></div>
+            <div class="bar" style="height: 100px; background-color: #668FCC;"></div>
+            <div class="bar" style="height: 140px; background-color: #F8B11E;"></div>
+            <div class="bar" style="height: 100px; background-color: #668FCC;"></div>
+            <div class="bar" style="height: 120px; background-color: #2B64B8;"></div>
+            <div class="bar" style="height: 60px; background-color: #D9E3F2; border-bottom-right-radius: 4px;"></div>
+          </div>
+          <div class="popular-times-graph" style="height: 20px;">
+            <div class="bar-times">11</div>
+            <div class="bar-times">12</div>
+            <div class="bar-times">13</div>
+            <div class="bar-times">14</div>
+          </div>
+        </div>
+        <div class="popular-times-levels"></div>
+      </div>
+      
+      <p style="display: flex; justify-content: center; font-style: italic;">
+        busy right now
+      </p>
+
+    </div>
+  </div>
+</template>
+<script>
+export default () => {
+  return $render;
+}
+</script>

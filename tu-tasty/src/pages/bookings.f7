@@ -1,0 +1,115 @@
+<template>
+  <div class="page background" data-name="bookings">
+    <div class="navbar">
+      <div class="navbar-bg"></div>
+      <div class="navbar-inner sliding">
+        <div class="left logo"></div>
+        <div class="right">
+          <i class="icon material-icons" id="ch" style="margin-right: 10px;">account_circle</i>
+          <i class="icon material-icons">settings</i>
+        </div>
+      </div>
+    </div>
+  
+    <div class="page-content" style="padding-top:0;">
+  
+      <p style="text-align: center; padding-left: 50px; padding-right: 50px">
+        Bookings need to be cancelled at least one week in advance.
+      </p>
+  
+      <div class="block-title" style="text-align: center;">TODAY</div>
+  
+      <!-- dish card with delete -->
+      <div class="list media-list dish-card">
+        <ul id="dish-cards-bookings-1">
+        </ul>
+      </div>
+  
+      <div class="block-title" style="text-align: center;">TOMORROW</div>
+      <div class="list media-list dish-card">
+        <ul id="dish-cards-bookings-2">
+          
+        </ul>
+      </div>
+  
+      <div class="block-title" style="text-align: center;">15.02.2023</div>
+      <div class="list media-list dish-card">
+        <ul id="dish-cards-bookings-3">
+          
+        </ul>
+      </div>
+      
+    </div>
+  </div>
+  </template>
+  <script>
+    import mockDishes from '../js/dishes.js';
+  
+    export default (props, { $, $f7, $on }) => {
+      let calendarModal;
+  
+      $on('pageInit', () => {
+        displayDishes('dish-cards-bookings-1');
+        displayDishes('dish-cards-bookings-2');
+        displayDishes('dish-cards-bookings-3');
+        // Default
+  
+        $('.open-confirm').on('click', function () {
+          $f7.dialog.confirm('Delete this booking?', function () {
+          });
+        });
+      });
+      return $render;
+    };
+  
+    function displayDishes(elementID) {
+      const dishCards = document.getElementById(elementID);
+      dishCards.innerHTML = "";
+      let dishes = mockDishes();
+      console.log(dishes);
+      dishes.forEach((dish) => {
+        if(elementID != 'dish-cards-bookings-3' && !datesAreOnSameDay(dish.date,new Date(Date.now())) || (elementID == 'dish-cards-bookings-3' && datesAreOnSameDay(dish.date,new Date(Date.now())))) return;
+        const currentDishHtmlString = `
+        <li>
+              <div class="dish-card-div item-link item-content">
+                <div class="item-media">
+                  <img src="${dish.url}" width="60" style="border-radius: 20%; "/>
+                  </div>
+                  <a href="/dish/${dish.id}" style="width:50%; color: black">
+                    <div class="item-title" style="overflow-wrap: break-word;">${dish.title}</div>
+                    <div class="item-subtitle" >${dish.type}</div>
+                    <div class="item-title">${dish.price}</div>
+                  </a>
+                  <div style="margin-right: 10px; width: 85px;">
+                    <div style="display: flex; margin-bottom: 10px;">
+                      <i class="icon material-icons" style="color:#F8B11E">grade</i>
+                      <div class="item-subtitle" >${dish.averageRating} (${dish.numRatings})</div>
+                    </div>
+                    <div style="display: flex; justify-content: flex-end;">
+                      <i onclick="deleteDish(this,${dish.date<=new Date(Date.now() + 86400000*7)})" class="${(dish.date<=new Date(Date.now() + 86400000*7)) ? "" : "open-confirm"} icon material-icons ${(dish.date<=new Date(Date.now() + 86400000*7)) ? "deactivated" : "activated"}" style="margin-right: 11px;">delete</i>
+                    </div>
+                  </div>
+              </div>
+            </li>
+        `;
+        dishCards.innerHTML += currentDishHtmlString
+      }
+  
+      )
+    }
+  
+    function sleep(time)
+  {
+      return(new Promise(function(resolve, reject) {
+          setTimeout(function() { resolve(); }, time);
+      }));
+  }
+  
+  window.deleteDish = (elem,illegal) => {
+    if(illegal) return;
+    sleep(5000).then(function() {
+      elem.parentElement.parentElement.parentElement.style["display"] = "none";
+  });
+  };
+  
+  </script>

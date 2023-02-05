@@ -1,0 +1,189 @@
+
+<template>
+  <div id="app">
+    <!-- Left panel with cover effect-->
+    <!--
+    <div class="panel panel-left panel-cover dark panel-init">
+      <div class="view">
+        <div class="page">
+          <div class="navbar">
+            <div class="navbar-bg"></div>
+            <div class="navbar-inner">
+              <div class="title">Treeeeee Panel</div>
+            </div>
+          </div>
+          <div class="page-content">
+            <div class="block">Left panel content goes here</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    -->
+    <!-- Right panel with reveal effect-->
+    <div class="panel panel-right panel-reveal dark">
+      <div class="view">
+        <div class="page">
+          <div class="navbar">
+            <div class="navbar-bg"></div>
+            <div class="navbar-inner">
+              <div class="title">Maja-Miao Panel</div>
+            </div>
+          </div>
+          <div class="page-content">
+            <div class="block">Right panel content goes here</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Views/Tabs container -->
+    <div class="views tabs safe-areas">
+      <!-- Tabbar for switching views-tabs -->
+      <div class="toolbar toolbar-bottom tabbar-labels">
+        <div class="toolbar-inner">
+          <a href="#view-home" class="tab-link tab-link-active">
+            <i class="icon material-icons if-not-md">watch_later</i>
+            <i class="icon material-icons if-md">watch_later</i>
+            <span class="tabbar-label">Popular Times</span>
+          </a>
+          <a href="#view-meal-schedule" class="tab-link">
+            <i class="icon material-icons if-not-md">restaurant_menu</i>
+            <i class="icon material-icons if-md">restaurant_menu</i>
+            <span class="tabbar-label">Meal Schedule</span>
+          </a>
+          <a href="#view-bookings" class="tab-link">
+            <i class="icon material-icons if-not-md">assignment_turned_in</i>
+            <i class="icon material-icons if-md">assignment_turned_in</i>
+            <span class="tabbar-label">Bookings</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Your main view/tab, should have "view-main" class. It also has "tab-active" class -->
+      <div id="view-home" class="view view-main view-init tab tab-active" data-url="/">
+        <!-- Home page will be loaded here dynamically from / route -->
+      </div>
+
+      <!-- Catalog View -->
+      <div id="view-meal-schedule" class="view view-init tab" data-name="meal-schedule" data-url="/meal-schedule/">
+        <!-- Catalog page will be loaded here dynamically from /catalog/ route -->
+      </div>
+
+      <!-- Settings View -->
+      <div id="view-bookings" class="view view-init tab" data-name="bookings" data-url="/bookings/">
+        <!-- Settings page will be loaded here dynamically from /settings/ route -->
+      </div>
+    </div>
+
+
+    <!-- Dish Rating Popup -->
+    <div class="popup" id="dish-rating-popup">
+      <div class="view">
+        <div class="page">
+          <div class="navbar">
+            <div class="navbar-bg"></div>
+            <div class="navbar-inner">
+              <div class="title">Dish Popup</div>
+              <div class="right">
+                <a href="#" class="link popup-close">Close</a>
+              </div>
+            </div>
+          </div>
+          <div class="page-content">
+            <div class="block">
+              <p>Dish Rating</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Login Screen -->
+    <div class="login-screen" id="my-login-screen">
+      <div class="view">
+        <div class="page">
+          <div class="page-content login-screen-content">
+            <div class="login-screen-title">Login</div>
+            <div class="list">
+              <ul>
+                <li class="item-content item-input">
+                  <div class="item-inner">
+                    <div class="item-title item-label">Username</div>
+                    <div class="item-input-wrap">
+                      <input type="text" name="username" placeholder="Your username" value="${username}" @input="${updateUsername}"/>
+
+                    </div>
+                  </div>
+                </li>
+                <li class="item-content item-input">
+                  <div class="item-inner">
+                    <div class="item-title item-label">Password</div>
+                    <div class="item-input-wrap">
+                      <input type="password" name="password" placeholder="Your password" value="${password}" @input="${updatePassword}"/>
+
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="list">
+              <ul>
+                <li>
+                  <a href="#" class="item-link list-button login-button" @click="${alertLoginData}">Sign In</a>
+
+                </li>
+              </ul>
+              <div class="block-footer">Some text about login information.<br/>Click "Sign In" to close Login Screen</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</template>
+<style>
+   /* Style of the bottom navigation bar  */
+  .toolbar{
+    background-color: white;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    overflow: hidden;
+    box-shadow: 3px 3px 8px #ccc;
+  }
+  .ios-translucent-bars .toolbar {
+    background-color: white;
+  }
+    .tabbar .tab-link-active, .tabbar-labels .tab-link-active {
+    color:#2c59a9;
+  }
+
+  .tabbar a, .tabbar-labels a{
+    color:#bcbcbc;
+  }
+
+</style>
+
+<script>
+  export default (props, { $f7, $update }) => {
+    // Login screen demo data
+    let username = '';
+    let password = '';
+
+    const updateUsername = (e) => {
+      username = e.target.value;
+      $update();
+    }
+    const updatePassword = (e) => {
+      password = e.target.value;
+      $update();
+    }
+    const alertLoginData = () => {
+      $f7.dialog.alert('Username: ' + username + '<br/>Password: ' + password, () => {
+        $f7.loginScreen.close();
+      });
+    }
+
+    return $render;
+  }
+</script>
